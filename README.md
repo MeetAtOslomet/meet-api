@@ -10,7 +10,7 @@
 | --- | --- |
 | Heartbeat | yes |
 
-**NOTE** Query name should allways be in lowercase \n
+**NOTE** Query name should allways be in lowercase <br />
 Example usage *meet.vlab.cs.hioa.no/api?request=heartbeat*
 Url rewrite will probably be added at a later occasion
 
