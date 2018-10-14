@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         case 'heartbeat':
         {
             require './get/heartbeat.php';
-            $obj = new heartbeat();
+            $obj = new heartbeat($db);
             $json = $obj->getJson();
             echo $json;
             break;

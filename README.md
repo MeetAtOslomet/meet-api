@@ -6,9 +6,9 @@
 | GET | yes |
 
 ## Requests
-| GET | Implemented |
+| GET | Implemented | Details |
 | --- | --- |
-| Heartbeat | yes |
+| Heartbeat | yes | status will be **false** if a connection to the designated database could not be established |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage http://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
