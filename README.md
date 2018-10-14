@@ -11,7 +11,7 @@
 | Heartbeat | yes |
 
 **NOTE** Query name should allways be in lowercase <br />
-Example usage (meet.vlab.cs.hioa.no/api?request=heartbeat) <br />
+Example usage [meet.vlab.cs.hioa.no/api?request=heartbeat] <br />
 Url rewrite will probably be added at a later occasion
 
 | POST | Implemented |
