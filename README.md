@@ -10,7 +10,7 @@
 | --- | --- |
 | Heartbeat | yes |
 
-***NOTE*** Query name should allways be in lowercase
+**NOTE** Query name should allways be in lowercase
 Example usage *meet.vlab.cs.hioa.no/api?request=heartbeat*
 Url rewrite will probably be added at a later occasion
 
@@ -20,7 +20,7 @@ Url rewrite will probably be added at a later occasion
 
 
 
-***NOTE**
+**NOTE**
 
 Database connections should not be and will not be present in the repo
 Connection file exists only on server and is only simple mysqli connection
