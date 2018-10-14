@@ -6,17 +6,18 @@
 | GET | yes |
 
 ## Requests
-| GET | Implemented | Details |
+| GET | Implemented | requires key | Details |
 | --- | --- |
-| Heartbeat | yes | status will be **false** if a connection to the designated database could not be established |
+| heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage http://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
 Url rewrite will probably be added at a later occasion
 
-| POST | Implemented |
+| POST | Implemented | requires key | details |
 | --- | --- |
-| N/A | N/A |
+| register_user | yes | no | checks if user is present, if not user will be added |
+| login_user | yes | no | returns key for verification |
 
 
 
