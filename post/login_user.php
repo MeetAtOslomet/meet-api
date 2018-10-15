@@ -43,7 +43,7 @@
                 $dbPassword = $sqlData['password'];
                 $dbValid = $sqlData['valid'];
 
-                if ($dbUsername == $username && $dbPassword == $password && $dbValid == 1)
+                if ($dbUsername == $username && $dbPassword == $password && !empty($dbPassword) && $dbPassword != "null" && $dbValid == 1)
                 {
                     $d = new DateTime();
                     $key = hash_hmac('sha256', $username.$d->getTimestamp(), $this->secret);
