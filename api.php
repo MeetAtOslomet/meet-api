@@ -2,9 +2,13 @@
 require '../db.php';
 require '../key.php';
 
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
+
+
+
+$authKey = $_POST['authenticationToken'];
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
 {
@@ -33,7 +37,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
     {
         case 'register_user':
         {
-            echo 'Inndata: ' . $_POST['data'];
+            //echo 'Inndata: ' . $_POST['data'];
             require './post/register_user.php';
             $obj = new register_user($db, $_POST['data']);
             echo $obj->out;
@@ -47,6 +51,21 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
         
+        case 'auth_check':
+        {
+            $haskey = hasKey($db, $authKey);
+            echo $haskey;
+            break;
+        }
+
+        case 'activate_user':
+        {
+            require './post/activate_user.php';
+            $obj = new activate_user($db, $_POST['data']);
+            echo $obj->out;
+            break;
+        }
+
         case 'list_users':
         {
             if (hasKey($_POST['key']) == true)
@@ -62,22 +81,30 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 
 }
 
-function hasKey($key)
+function hasKey($db, $authKey)
 {
-    $res = mysqli_query($db, "SELECT token FROM `users` WHERE token='".$key."';");
-    if (mysqli_num_rows($res) == 1)
+    $out = false;
+    $res = mysqli_query($db, "SELECT token FROM `users` WHERE token='".$authKey."';");
+    if (mysqli_num_rows($res)== 1)
     {
-        return true;
+        $out = json_encode(array(
+            "status" => true,
+            "authentication" => "yes",
+            "authenticationExit" => 0,
+            "message" => "Key is valid, request approved"
+        ));
+    }
+    else
+    {
+        $out = json_encode(array(
+            "status" => true,
+            "authentication" => "no",
+            "authenticationExit" => 1,
+            "message" => "Key is not valid, request rejected!"
+        ));
     }
 
-    $this->out = json_encode(array(
-        "status" => true,
-        "hasKey" => "failed",
-        "hasKeyExit" => 1,
-        "message" => "Key is not valid, request rejected!"
-    ));
-
-    return false;
+    return $out;
 }
 
 

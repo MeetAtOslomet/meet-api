@@ -55,7 +55,7 @@
                         "authenticationToken" => $key
                     ));
                     $storeKey = mysqli_query($this->db, "UPDATE `users` SET token='".$key."' WHERE id='".$dbId."';");
-                    print_r($storeKey);
+                    //print_r($storeKey);
 
                 }
                 else if ($dbUsername == $username && $dbPassword == $password && $dbValid == 0)

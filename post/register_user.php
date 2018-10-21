@@ -11,10 +11,10 @@
             $json = json_decode($data);
 
             $username = $json->{'username'};
-            $password = $json->{'password'};
-            $type = $json->{'type'};
+            //$password = $json->{'password'};
+            //$type = $json->{'type'};
 
-            if (empty($username) || empty($password) || empty($type))
+            if (empty($username))
             {
                 $array = array(
                     "status" => false,
@@ -24,7 +24,7 @@
             }
             else
             {
-                $error = $this->sql($username, $password, $type);
+                $error = $this->sql($username);
                 if ($error == false)
                 {
                     $array = array(
@@ -32,7 +32,38 @@
                         "registration" => "success",
                         "registrationExit" => 0
                     );
-                    $this->out = json_encode($array);
+
+                    $numbers = range(1,4);
+                    shuffle($numbers);
+                    $code = $numbers[0].$numbers[1].$numbers[2].$numbers[3];
+
+
+
+                    $to = $username."@oslomet.no";
+                    $from = "From: Meet at Oslomet <meetistheway@gmail.com>";
+                    $subject = "Verification code for Meet @ OsloMet";
+                    $message = "Your verification code is ".$code. "\n Please insert this code to verify that you are a student or employee at OsloMet"; 
+                    $retval = mail($to, $subject, $message, $from);
+
+                    if ($retval == true)
+                    {
+                        //Insert into database
+                        mysqli_query($this->db, "REPLACE INTO activation_key (`username`, `activationKey`) VALUES ('".$username."', '".$code."')");
+                        $this->out = json_encode($array);
+                    }
+                    else
+                    {
+                        
+                        $array = array(
+                            "status" => $status,
+                            "registration" => "server error",
+                            "registrationExit" => 2
+                        );
+
+                        $this->out = json_encode($array);
+                    }
+
+                    
                 }
                 else
                 {
@@ -54,22 +85,33 @@
 
         }
 
-        function sql($username, $password, $type)
+        function sql($username)
         {
             $exists = false;
             /*$res = mysqli_query($this->db, "SELECT username FROM `users` WHERE `username` LIKE '".$username."';");
             print_r($this->db);
             print_r($res);*/
-            echo "SELECT username FROM `users` WHERE `username` LIKE '".$username."';";
-            if (mysqli_num_rows(mysqli_query($this->db, "SELECT username FROM `users` WHERE `username` LIKE '".$username."';"))== 1)
+            //echo "SELECT username FROM `users` WHERE `username` LIKE '".$username."';";
+            $res = mysqli_query($this->db, "SELECT username, valid FROM `users` WHERE `username` LIKE '".$username."';");
+            if (mysqli_num_rows($res)== 1)
             {
+                $sqlData = mysqli_fetch_assoc($res);
+                $valid = $sqlData['valid'];
+                if ($valid == 0)
+                {
+                    $exists = false;
+                }
+                else
+                {
+                    $exists = true;
+                }
                 //User exists
-                $exists = true;
+                
             }
             else
             {
-                $res = mysqli_query($this->db, "INSERT INTO users (`username`, `password`, `type`) VALUES ('".$username."', '".$password."', '".$type."')");
-                echo $res;
+                $res = mysqli_query($this->db, "INSERT INTO users (`username`) VALUES ('".$username."')");
+                //echo $res;
             }
             return $exists;
         }
