@@ -66,6 +66,15 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'initPass_user':
+        {
+            require './post/initPass_user.php';
+            $obj = new initPass_user($db, $_POST['data']);
+            echo $obj->out;
+
+            break;
+        }
+
         case 'list_users':
         {
             if (hasKey($_POST['key']) == true)
