@@ -32,7 +32,7 @@
 
         function handleLogin($username, $password)
         {
-            $res = mysqli_query($this->db, "SELECT id, username, password, valid FROM `users` WHERE `username` LIKE '".$username."';");
+            $res = mysqli_query($this->db, "SELECT id, username, password, valid FROM `auth_users` WHERE `username` LIKE '".$username."';");
             //print_r($res);
             if (mysqli_num_rows($res) == 1)
             {
@@ -54,7 +54,7 @@
                         "authenticationExit" => 0,
                         "authenticationToken" => $key
                     ));
-                    $storeKey = mysqli_query($this->db, "UPDATE `users` SET token='".$key."' WHERE id='".$dbId."';");
+                    $storeKey = mysqli_query($this->db, "UPDATE `auth_users` SET token='".$key."' WHERE id='".$dbId."';");
                     //print_r($storeKey);
 
                 }

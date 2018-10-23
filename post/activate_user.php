@@ -22,7 +22,7 @@
             $res = mysqli_query($this->db, "SELECT * FROM activation_key WHERE username='".$username."' AND activationKey='".$code."';");
             if (mysqli_num_rows($res) == 1)
             {
-                mysqli_query($this->db, "UPDATE users SET valid=1 WHERE username='".$username."';");
+                mysqli_query($this->db, "UPDATE auth_users SET valid=1 WHERE username='".$username."';");
                 $this->out = json_encode(array(
                     "status" => true,
                     "authentication" => "success",

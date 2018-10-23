@@ -92,7 +92,7 @@
             print_r($this->db);
             print_r($res);*/
             //echo "SELECT username FROM `users` WHERE `username` LIKE '".$username."';";
-            $res = mysqli_query($this->db, "SELECT username, valid FROM `users` WHERE `username` LIKE '".$username."';");
+            $res = mysqli_query($this->db, "SELECT username, valid FROM `auth_users` WHERE `username` LIKE '".$username."';");
             if (mysqli_num_rows($res)== 1)
             {
                 $sqlData = mysqli_fetch_assoc($res);
@@ -110,7 +110,7 @@
             }
             else
             {
-                $res = mysqli_query($this->db, "INSERT INTO users (`username`) VALUES ('".$username."')");
+                $res = mysqli_query($this->db, "INSERT INTO auth_users (`username`) VALUES ('".$username."')");
                 //echo $res;
             }
             return $exists;

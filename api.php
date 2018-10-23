@@ -93,7 +93,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 function hasKey($db, $authKey)
 {
     $out = false;
-    $res = mysqli_query($db, "SELECT token FROM `users` WHERE token='".$authKey."';");
+    $res = mysqli_query($db, "SELECT token FROM `auth_users` WHERE token='".$authKey."';");
     if (mysqli_num_rows($res)== 1)
     {
         $out = json_encode(array(

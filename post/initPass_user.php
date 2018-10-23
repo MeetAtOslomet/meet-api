@@ -30,7 +30,7 @@
 
         function initPassword($username, $password)
         {
-            $res = mysqli_query($this->db, "SELECT id, username, password, valid FROM `users` WHERE username='".$username."' AND password IS NULL;");
+            $res = mysqli_query($this->db, "SELECT id, username, password, valid FROM `auth_users` WHERE username='".$username."' AND password IS NULL;");
             if (mysqli_num_rows($res) == 1)
             {
                 $sqlData = mysqli_fetch_assoc($res);
@@ -41,7 +41,7 @@
 
                 if ($dbPassword == null)
                 {
-                    mysqli_query($this->db, "UPDATE users SET password='".$password."' WHERE username='".$username."' AND id=".$dbId.";");
+                    mysqli_query($this->db, "UPDATE auth_users SET password='".$password."' WHERE username='".$username."' AND id=".$dbId.";");
                     $this->out = json_encode(array(
                         "status" => true,
                         "authentication" => "accepted",
