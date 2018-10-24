@@ -19,7 +19,7 @@ var jData = JSON.stringify(obj);
 
 $.ajax({
     type : 'POST',
-    url : "http://meet.vlab.cs.hioa.no/api.php",
+    url : "https://meet.vlab.cs.hioa.no/api.php",
     data : {
         request: "register_user",
         data: jData

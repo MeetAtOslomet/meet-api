@@ -54,7 +54,8 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
         case 'auth_check':
         {
             $haskey = hasKey($db, $authKey);
-            echo $haskey;
+            $hasKeyoUT = hasKeyJson($haskey);
+            echo $hasKeyoUT;
             break;
         }
 
@@ -77,10 +78,15 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 
         case 'list_users':
         {
-            if (hasKey($_POST['key']) == true)
+            if (hasKey($db, $authKey) == true)
             {
-
+                echo "Valid " . true;
             }
+            else
+            {
+                echo "Invalid" . false;
+            }
+            break;
         }
 
         default:
@@ -95,6 +101,21 @@ function hasKey($db, $authKey)
     $out = false;
     $res = mysqli_query($db, "SELECT token FROM `auth_users` WHERE token='".$authKey."';");
     if (mysqli_num_rows($res)== 1)
+    {
+        $out = true;
+    }
+    else
+    {
+        $out = false;
+    }
+
+    return $out;
+}
+
+function hasKeyJson($hasKey)
+{
+    $out = NULL;
+    if ($hasKey == true)
     {
         $out = json_encode(array(
             "status" => true,
@@ -112,10 +133,8 @@ function hasKey($db, $authKey)
             "message" => "Key is not valid, request rejected!"
         ));
     }
-
     return $out;
 }
-
 
 mysqli_close($db);
 ?>
