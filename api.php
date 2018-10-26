@@ -6,9 +6,20 @@ require '../key.php';
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);*/
 
+if ($_SERVER['HTTPS'] != "on")
+{
+    $out = json_encode(array(
+        "status" => true,
+        "security" => "none",
+        "securityExit" => 1,
+        "message" => "API does not accept non HTTPS requests!"
+    ));
+    echo $out;
+    exit;
+}
 
 
-$authKey = $_POST['authenticationToken'];
+$authKey = $_REQUEST['authenticationToken'];
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
 {
@@ -24,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
 
         
         default:
-            echo "Break missing in case!";
+            echo "Defaulted";
             # code...
             break;
     }
