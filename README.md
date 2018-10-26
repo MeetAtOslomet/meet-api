@@ -11,6 +11,7 @@
 | GET | Implemented | Requires key | Details |
 | --- | --- | --- | --- |
 | heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
+| 
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
@@ -21,8 +22,8 @@ Url rewrite will probably be added at a later occasion
 | register_user | yes | no | checks if user is present, if not user will be added |
 | login_user | yes | no | returns key for verification |
 | auth_check | yes | yes | checks if key provided is valid |
-| activate_user | no | checks if key corresponds with key stored |
-| initPass_user | yes | Sets first time password |
+| activate_user | yes | no | checks if key corresponds with key stored |
+| initPass_user | yes | yes | Sets first time password |
 
 *Requires key
 Authentication key is required to perform this type of request
