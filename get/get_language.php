@@ -27,8 +27,8 @@ class get_language
         $array = array();
         while ($row = mysqli_fetch_array($res))
         {
-            $hobby = new language ($row['id_language'], $row['name'], $row['teachOrLearn']);
-            array_push($array, $hobby);
+            $hobby = new language ($row['id_language'], $row['name']);
+            array_push($array, $hobby); 
         }
 
         $status = false;
