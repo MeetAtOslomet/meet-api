@@ -12,6 +12,7 @@
 | --- | --- | --- | --- |
 | heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
 | get_user | yes | yes | Gets user based on username or user id |
+| get_hobbies | yes | no | Gets hobbies based on input, supports single number and multiple values like this "1,2,3,4" |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
@@ -25,6 +26,7 @@ Url rewrite will probably be added at a later occasion
 | activate_user | yes | no | checks if key corresponds with key stored |
 | initPass_user | yes | yes | Sets first time password |
 | add_user | yes | yes | JSON data provied needs to comply with required database fields |
+| add_hobbies | yes | yes | Does not check if the entry exists and will throw error if field exists |
 
 
 

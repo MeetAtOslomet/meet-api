@@ -47,6 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             }
             break;
         }
+
+        case 'get_hobbies':
+        {
+            require './get/get_hobbies.php';
+            
+            $obj = new get_hobbies($db, (isset($_GET['hobbies'])) ? $_GET['hobbies'] : null);
+            echo $obj->out;
+            break;
+        }
         
         default:
             echo "Defaulted";
@@ -107,6 +116,22 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             {
                 require './post/add_user.php';
                 $obj = new add_user($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
+        case 'add_hobbies':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/add_hobbies.php';
+                $obj = new add_hobbies($db, $_POST['data']);
                 echo $obj->out;
             }
             else
