@@ -56,7 +56,17 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             echo $obj->out;
             break;
         }
-        
+
+        case 'get_language':
+        {
+            require './get/get_language.php';
+
+            $obj = new get_language($db, (isset($_GET['language'])) ? $_GET['language'] : null);
+            echo $obj->out;
+            break;
+        }
+
+
         default:
             echo "Defaulted";
             # code...
