@@ -152,6 +152,22 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'add_language':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/add_language.php';
+                $obj = new add_language($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
         case 'list_users':
         {
             if (hasKey($db, $authKey) == true)
