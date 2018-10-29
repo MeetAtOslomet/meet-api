@@ -29,6 +29,21 @@ Url rewrite will probably be added at a later occasion
 | add_hobbies | yes | yes | Does not check if the entry exists and will throw error if field exists |
 
 
+| POST | Fields | Required | 
+| --- | --- | --- |
+| add_user | --- | --- |
+| --- | username | yes |
+| --- | first_name | yes |
+| --- | last_name | no |
+| --- | hide_last_name | no |
+| --- | type | yes |
+| --- | gender | yes |
+| --- | age | yes |
+| --- | hide_age | no |
+| --- | id_campus | yes |
+| --- | biography | no |
+
+
 
 *Requires key
 Authentication key is required to perform this type of request
