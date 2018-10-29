@@ -4,23 +4,30 @@
     class add_user
     {
         public $db;
+        public $status;
         public $out;
 
         function __construct($db, $data)
         {
             $this->db = $db;
 
+            $status = false;
+            if ($this->db == true)
+            {
+                $status = true;
+            }
+            $this->status = $status;
             $json = json_decode($data);
-            
+            var_dump($json);
             $usr = new user(
                 $json->{'username'},
                 $json->{'first_name'},
                 $json->{'last_name'},
-                $json->{'hide_last_name'},
+                ($json->{'hide_last_name'}) ? 1 : 0, // Just F php code
                 $json->{'type'},
                 $json->{'gender'},
                 $json->{'age'},
-                $json->{'hide_age'},
+                ($json->{'hide_age'}) ? 1 : 0, // Just F php code, this should not be necessary!
                 $json->{'id_campus'},
                 $json->{'biography'}
             );
@@ -46,6 +53,7 @@
         function update_database($user)
         {
             $query = null;
+            print_r($user);
             $res = mysqli_query($this->db, "SELECT id_user, username FROM `User` WHERE username = '".$user->username."';");
             if (mysqli_num_rows($res)== 1)
             {
@@ -79,7 +87,7 @@
             {
                 //Success
                 $array = array(
-                    "status" => $status,
+                    "status" => $this->status,
                     "data" => "success",
                     "dataExit" => 0,
                     "message" => "Data uploaded and updated successfully"
@@ -90,7 +98,7 @@
             else
             {
                 $array = array(
-                    "status" => $status,
+                    "status" => $this->status,
                     "data" => "failure",
                     "dataExit" => 1,
                     "message" => "Data accepted but updating failed with the following error: ".$errorOut. " ::End::"

@@ -32,6 +32,7 @@
             }
             if (empty($this->hide_last_name) && is_null($this->hide_last_name))
             {
+                echo "Altering lastname boolean";
                 $this->hide_last_name = true;
             }
             if (empty($this->gender) || is_null($this->gender))
@@ -40,6 +41,7 @@
             }
             if (empty($this->hide_age) && is_null($this->hide_age))
             {
+                echo "Altering age boolean";
                 $this->hide_age = true;
             }
             if (empty($this->biography) && is_null($this->biography))

@@ -107,6 +107,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             {
                 require './post/add_user.php';
                 $obj = new add_user($db, $_POST['data']);
+                echo $obj->out;
             }
             else
             {
