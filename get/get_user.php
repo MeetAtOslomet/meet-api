@@ -8,7 +8,7 @@
 
         function __construct($db, $data)
         {
-            $res = mysqli_query($db, "SELECT * FROM User WHERE id_user='".$data."';");
+            $res = mysqli_query($db, "SELECT * FROM user WHERE id_user='".$data."';");
             if (mysqli_num_rows($res)== 1)
             {
                 $sqlData = mysqli_fetch_assoc($res);

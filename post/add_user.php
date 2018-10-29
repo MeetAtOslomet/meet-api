@@ -54,7 +54,7 @@
         {
             $query = null;
             print_r($user);
-            $res = mysqli_query($this->db, "SELECT id_user, username FROM `User` WHERE username = '".$user->username."';");
+            $res = mysqli_query($this->db, "SELECT id_user, username FROM `user` WHERE username = '".$user->username."';");
             if (mysqli_num_rows($res)== 1)
             {
                 $sqlData = mysqli_fetch_assoc($res);
@@ -75,7 +75,7 @@
             }
             else
             {
-                $query = "INSERT INTO User (`username`, `first_name`, `last_name`, `hide_last_name`, `type`, `gender`, `age`, `hide_age`, `id_campus`, `biography`) 
+                $query = "INSERT INTO user (`username`, `first_name`, `last_name`, `hide_last_name`, `type`, `gender`, `age`, `hide_age`, `id_campus`, `biography`) 
                 VALUES ('".$user->username."', '".$user->first_name."', '".$user->last_name."', '".$user->hide_last_name."', '".$user->type."', '".$user->gender."', '".$user->age."', '".$user->hide_age."', '".$user->id_campus."',  '".$user->biography."');";
             }
             

@@ -8,7 +8,7 @@
 | GET | yes |
 
 ## Requests
-| GET | Implemented | Requires key | Details |
+| GET | Implemented | Requires key* | Details |
 | --- | --- | --- | --- |
 | heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
 | get_user | yes | yes | Gets user based on username or user id |

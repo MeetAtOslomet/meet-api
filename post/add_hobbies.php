@@ -27,7 +27,7 @@
                 }
             }
 
-            $query = "INSERT INTO addHobbies (`id_user`, `id_hobbies`) VALUES ".$values;
+            $query = "INSERT INTO user_Hobbies (`id_user`, `id_hobbies`) VALUES ".$values;
 
             $result = mysqli_query($db, $query);
             $error = mysqli_error($db);

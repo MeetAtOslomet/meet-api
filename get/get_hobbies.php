@@ -12,15 +12,15 @@
             $query = null;
             if ($data == null)
             {
-                $query = "SELECT * FROM Hobbies";
+                $query = "SELECT * FROM hobbies";
             }
             elseif (is_string($data) && strpos($data, ',') !== false)
             {
-                $query = "SELECT * FROM Hobbies WHERE id_hobbies IN (".$data.");";
+                $query = "SELECT * FROM hobbies WHERE id_hobbies IN (".$data.");";
             }
             else
             {
-                $query = "SELECT * FROM Hobbies WHERE id_hobbies = '".$data."'";
+                $query = "SELECT * FROM hobbies WHERE id_hobbies = '".$data."'";
             }
 
             $res = mysqli_query($db, $query);
