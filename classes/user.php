@@ -26,23 +26,23 @@
             $this->id_campus = $id_campus;
             $this->biography = $biography;
 
-            if (empty($this->last_name) || !isset($this->last_name))
+            if (empty($this->last_name) && is_null($this->last_name))
             {
                 $this->last_name = "";
             }
-            if (empty($this->hide_last_name) || !isset($this->hide_last_name))
+            if (empty($this->hide_last_name) && is_null($this->hide_last_name))
             {
                 $this->hide_last_name = true;
             }
-            if (empty($this->gender) || !isset($this->gender))
+            if (empty($this->gender) || is_null($this->gender))
             {
                 $this->gender = -1;
             }
-            if (empty($this->hide_age) || !isset($this->hide_age))
+            if (empty($this->hide_age) && is_null($this->hide_age))
             {
                 $this->hide_age = true;
             }
-            if (empty($this->biography) || !isset($this->biography))
+            if (empty($this->biography) && is_null($this->biography))
             {
                 $this->biography = "";
             }
@@ -64,6 +64,29 @@
                 return false;
             }
 
+        }
+
+        function getFilteredUser_JSON()
+        {
+            $array = array(
+                "username" => $this->username,
+                "first_name" => $this->first_name,
+                "type" => $this->type,
+                "gender" => $this->gender,
+                "id_campus" => $this->id_campus,
+                "biographgy" => $this->biography
+            );
+
+            if ($this->hide_last_name == false)
+            {
+                $array["last_name"] = $this->last_name;
+            }
+            if ($this->hide_age == false)
+            {
+                $array["age"] = $this->age;
+            }
+            $out = json_encode($array);
+            return $out;
         }
 
     }

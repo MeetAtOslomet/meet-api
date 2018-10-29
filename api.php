@@ -19,7 +19,7 @@ if ($_SERVER['HTTPS'] != "on")
 }
 
 
-$authKey = $_REQUEST['authenticationToken'];
+$authKey = (isset($_REQUEST['authenticationToken'])) ? $_REQUEST['authenticationToken'] : null;
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
 {
@@ -37,12 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         {
             if (hasKey($db, $authKey) == true)
             {
-
+                require './get/get_user.php';
+                $obj = new get_user($db, $_GET['id_user']);
+                echo $obj->out;
             }
             else
             {
-                
+                echo hasKeyJson(false);
             }
+            break;
         }
         
         default:

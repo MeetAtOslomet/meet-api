@@ -11,7 +11,7 @@
 | GET | Implemented | Requires key | Details |
 | --- | --- | --- | --- |
 | heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
-| get_user | no | yes | Gets user based on username or user id |
+| get_user | yes | yes | Gets user based on username or user id |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
