@@ -2,9 +2,9 @@
 require '../db.php';
 require '../key.php';
 
-/*ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
+error_reporting(E_ALL);
 
 if ($_SERVER['HTTPS'] != "on")
 {
@@ -33,6 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_user':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+
+            }
+            else
+            {
+                
+            }
+        }
         
         default:
             echo "Defaulted";
@@ -83,6 +94,21 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             require './post/initPass_user.php';
             $obj = new initPass_user($db, $_POST['data']);
             echo $obj->out;
+
+            break;
+        }
+
+        case 'add_user':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/add_user.php';
+                $obj = new add_user($db, $_POST['data']);
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
 
             break;
         }
