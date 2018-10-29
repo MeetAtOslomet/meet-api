@@ -31,17 +31,20 @@ Url rewrite will probably be added at a later occasion
 
 | POST | Fields | Required | 
 | --- | --- | --- |
-| add_user | --- | --- |
-| --- | username | yes |
-| --- | first_name | yes |
-| --- | last_name | no |
-| --- | hide_last_name | no |
-| --- | type | yes |
-| --- | gender | yes |
-| --- | age | yes |
-| --- | hide_age | no |
-| --- | id_campus | yes |
-| --- | biography | no |
+| add_user |  |  |
+|  | username | yes |
+|  | first_name | yes |
+|  | last_name | no |
+|  | hide_last_name | no |
+|  | type | yes |
+|  | gender | yes |
+|  | age | yes |
+|  | hide_age | no |
+|  | id_campus | yes |
+|  | biography | no |
+| add_hobbies | | |
+|  | id_user | yes |
+|  | id_hobbies | yes |
 
 
 
