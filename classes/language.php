@@ -1,5 +1,5 @@
 <?php
-    class hobbies
+    class language
     {
         public $id_language;
         public $name;
