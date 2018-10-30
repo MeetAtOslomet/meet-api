@@ -1,0 +1,110 @@
+<?php
+
+    class set_like
+    {
+        public $db;
+        public $out;
+
+        function __construct($db, $data)
+        {
+            $this->db = $db;
+            $status = ($db == true) ? true : false;
+
+            $json = json_decode($data);
+            $id_user = $json->{'id_user'};
+            $id_user_chosen = $json->{'id_user_chosen'};
+
+            if (!empty($id_user) && !empty($id_user_chosen))
+            {
+                $select = mysqli_query($db, "SELECT * FROM match_request WHERE id_userSend=".$id_user_chosen." AND id_userMatch=".$id_user.";";
+
+                if (mysqli_num_rows($select)==1)
+                {
+                    //Its a match
+                    mysqli_query($db, "UPDATE match_request SET requestState=1 WHERE id_userSend=".$id_user_chosen."  AND id_userMatch=".$id_user.";");
+
+                    //Call A match notification here
+
+                    $error = mysqli_error($db);
+
+                    $errorOut = (string)$error;
+                    if (strlen($errorOut) == 0)
+                    {
+                        //Success
+                        $array = array(
+                            "status" => $status,
+                            "data" => "success",
+                            "requestState" => 1,
+                            "dataExit" => 0,
+                            "message" => "Data uploaded and updated successfully"
+                        );
+
+                        $this->out = json_encode($array);
+                    }
+                    else
+                    {
+                        $array = array(
+                            "status" => $status,
+                            "data" => "failure",
+                            "dataExit" => 1,
+                            "message" => "Data accepted but updating failed with the following error: ".$errorOut. " ::End::"
+                        );
+
+                        $this->out = json_encode($array);
+                    }
+
+
+                }
+                else
+                {
+                    $query = "REPLACE INTO match_request (id_userSend, id_userMatch, requestState) VALUES (".$id_user.", ".$id_user_chosen.", 0);"
+                    $res = mysqli_query($db, $query);
+
+                    $error = mysqli_error($db);
+
+                    $errorOut = (string)$error;
+                    if (strlen($errorOut) == 0)
+                    {
+                        //Success
+                        $array = array(
+                            "status" => $status,
+                            "data" => "success",
+                            "requestState" => 0,
+                            "dataExit" => 0,
+                            "message" => "Data uploaded and updated successfully"
+                        );
+
+                        $this->out = json_encode($array);
+                    }
+                    else
+                    {
+                        $array = array(
+                            "status" => $status,
+                            "data" => "failure",
+                            "dataExit" => 1,
+                            "message" => "Data accepted but updating failed with the following error: ".$errorOut. " ::End::"
+                        );
+
+                        $this->out = json_encode($array);
+                    }
+                }
+
+            }
+            else
+            {
+                $array = array(
+                    "status" => $status,
+                    "data" => "denied",
+                    "dataExit" => 2,
+                    "message" => "Data rejected due to requirments not met"
+                );
+
+                $this->out = json_encode($array);
+            }
+
+
+        }
+    }
+
+
+?>

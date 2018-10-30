@@ -169,9 +169,39 @@
                 array_push($recommend, $rec);
             }
 
+            $toRemove = array();
+            $getMatched = mysqli_query($this->db, "SELECT * FROM match_request WHERE (id_userSend = ".$this->id_user." OR id_userMatch = ".$this->id_user.") AND requestState = 1;");
+            while ($row = mysqli_fetch_array($getMatched))
+            {
+                $Suid = $row['id_userSend'];
+                $Muid = $row['id_userMatch'];
+                
+                if (!in_array($Suid, $toRemove))
+                {
+                    array_push($toRemove, $Suid);
+                }
+                if (!in_array($Muid, $toRemove))
+                {
+                    array_push($toRemove, $Muid);
+                }
+            }
+
+            $newRecommend = array();
+            for ($i = 0; $i < count($recommend); $i++)
+            {
+                $user = $recommend[$i]->user;
+                $userId = $user->id_user;
+                if (!in_array($userId, $toRemove))
+                {
+                    array_push($newRecommend, $recommend[$i]);
+                }
+            }            
+
+
+
             $recOut = array(
                 "status" => true,
-                "data" => $recommend
+                "data" => $newRecommend
             );
 
             $json = json_encode($recOut);
