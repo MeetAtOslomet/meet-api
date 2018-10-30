@@ -2,6 +2,7 @@
 
     class user 
     {
+        public $id_user;
         public $username; #required
         public $first_name; #required
         public $last_name;

@@ -1,0 +1,70 @@
+{
+    "status": true,
+    "data": [
+        {
+            "user": {
+                "id_user": "3",
+                "username": "s12345",
+                "first_name": "Hey",
+                "last_name": "Test5",
+                "hide_last_name": "0",
+                "type": "1",
+                "gender": "1",
+                "age": "22",
+                "hide_age": "0",
+                "id_campus": "1",
+                "biography": ""
+            },
+            "languages": [
+                {
+                    "id_user": "3",
+                    "id_language": "7",
+                    "teachOrLearn": "1",
+                    "name": "Japanese"
+                }
+            ],
+            "hobbies": [
+                {
+                    "id_user": "3",
+                    "id_hobbies": "3",
+                    "name": "Swimming"
+                },
+                {
+                    "id_user": "3",
+                    "id_hobbies": "6",
+                    "name": "Developing"
+                }
+            ]
+        },
+        {
+            "user": {
+                "id_user": "4",
+                "username": "s1236",
+                "first_name": "Hei",
+                "last_name": "Test6",
+                "hide_last_name": "0",
+                "type": "0",
+                "gender": -1,
+                "age": "25",
+                "hide_age": "0",
+                "id_campus": "1",
+                "biography": ""
+            },
+            "languages": [
+                {
+                    "id_user": "4",
+                    "id_language": "7",
+                    "teachOrLearn": "1",
+                    "name": "Japanese"
+                }
+            ],
+            "hobbies": [
+                {
+                    "id_user": "4",
+                    "id_hobbies": "6",
+                    "name": "Developing"
+                }
+            ]
+        }
+    ]
+}

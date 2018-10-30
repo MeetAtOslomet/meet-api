@@ -60,9 +60,24 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         case 'get_language':
         {
             require './get/get_language.php';
-
+            
             $obj = new get_language($db, (isset($_GET['language'])) ? $_GET['language'] : null);
             echo $obj->out;
+            break;
+        }
+
+        case 'get_recommended':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/get_recommended.php';
+                $obj = new get_recommended($db, (isset($_GET['data'])) ? $_GET['data'] : null);
+                echo $obj->out;   
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
             break;
         }
 
