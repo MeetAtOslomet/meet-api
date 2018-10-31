@@ -13,6 +13,7 @@
 | heartbeat | yes | no | status will be **false** if a connection to the designated database could not be established |
 | get_user | yes | yes | Gets user based on username or user id |
 | get_hobbies | yes | no | Gets hobbies based on input, supports single number and multiple values like this "1,2,3,4" |
+| get_language | yes | no | Gets language based on input, supports single number and multiple values like this "1,2,3,4" |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
@@ -27,6 +28,7 @@ Url rewrite will probably be added at a later occasion
 | initPass_user | yes | yes | Sets first time password |
 | add_user | yes | yes | JSON data provied needs to comply with required database fields |
 | add_hobbies | yes | yes | Does not check if the entry exists and will throw error if field exists |
+| add_language | yes | yes | Does not check if the entry exists and will throw error if field exists |*
 
 
 | POST | Fields | Required | 
@@ -45,6 +47,10 @@ Url rewrite will probably be added at a later occasion
 | add_hobbies | | |
 |  | id_user | yes |
 |  | id_hobbies | yes |
+| add_language | | |
+|  | id_user | yes |
+|  | id_language | yes |
+|  | teachOrLearn | yes |
 
 
 
