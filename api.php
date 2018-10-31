@@ -167,12 +167,44 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'del_hobbies':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/del_hobbies.php';
+                $obj = new del_hobbies($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
         case 'add_language':
         {
             if (hasKey($db, $authKey) == true)
             {
                 require './post/add_language.php';
                 $obj = new add_language($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
+        case 'del_language':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/del_language.php';
+                $obj = new del_language($db, $_POST['data']);
                 echo $obj->out;
             }
             else
