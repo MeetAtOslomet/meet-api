@@ -33,6 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'chk_user':
+        {
+            require './get/chk_user.php';
+            $obj = new chk_user($db, $_GET['username']);
+            echo $obj->out;
+            break;
+        }
+
         case 'get_user':
         {
             if (hasKey($db, $authKey) == true)
