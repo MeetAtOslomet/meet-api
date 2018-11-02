@@ -56,6 +56,36 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_me':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/get_me.php';
+                $obj = new get_me($db, $_GET['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
+        case 'get_id_user':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/get_id_user.php';
+                $obj = new get_id_user($db, $_GET['username']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
         case 'get_hobbies':
         {
             require './get/get_hobbies.php';
@@ -222,7 +252,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 
             break;
         }
-
+        
         case 'set_meet':
         {
             if (hasKey($db, $authKey) == true)
@@ -239,8 +269,6 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
-
-
         case 'list_users':
         {
             if (hasKey($db, $authKey) == true)
@@ -253,7 +281,6 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             }
             break;
         }
-
 
 
         default:
