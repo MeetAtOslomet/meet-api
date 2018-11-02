@@ -20,7 +20,7 @@
 
             if (!empty($id_user) && !empty($id_user_chosen))
             {
-                $select = mysqli_query($db, "SELECT * FROM meeting_request WHERE id_userSend=".$id_user_chosen." AND id_userMatch=".$id_user.";";
+                $select = mysqli_query($db, "SELECT * FROM meeting_request WHERE id_userSend=".$id_user_chosen." AND id_userMatch=".$id_user.";");
 
                 if (mysqli_num_rows($select)==1)
                 {
@@ -61,7 +61,7 @@
                 }
                 else
                 {
-                    $query = "REPLACE INTO match_request (id_userSend, id_userMatch, place, dtime, meetingMessage, requestState ) VALUES (".$id_user.", ".$id_user_chosen.", ".$place.", ".$place.", ".$dtime.", ".$meetingMessage.", 0);"
+                    $query = "REPLACE INTO match_request (id_userSend, id_userMatch, place, dtime, meetingMessage, requestState ) VALUES (".$id_user.", ".$id_user_chosen.", ".$place.", ".$place.", ".$dtime.", ".$meetingMessage.",0);";
                     $res = mysqli_query($db, $query);
 
                     $error = mysqli_error($db);
