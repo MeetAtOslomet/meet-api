@@ -269,6 +269,21 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'set_like':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/set_like.php';
+                $obj = new set_like($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
         case 'list_users':
         {
             if (hasKey($db, $authKey) == true)
