@@ -223,6 +223,24 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'set_meet':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/set_meet.php';
+                $obj = new del_language($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
+
+
         case 'list_users':
         {
             if (hasKey($db, $authKey) == true)
@@ -235,6 +253,8 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             }
             break;
         }
+
+
 
         default:
             echo $_POST['request'] . ' is not a valid request';
