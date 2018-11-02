@@ -258,7 +258,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             if (hasKey($db, $authKey) == true)
             {
                 require './post/set_meet.php';
-                $obj = new del_language($db, $_POST['data']);
+                $obj = new set_meet($db, $_POST['data']);
                 echo $obj->out;
             }
             else
