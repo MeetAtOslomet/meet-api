@@ -61,7 +61,7 @@
                 }
                 else
                 {
-                    $query = "REPLACE INTO match_request (id_userSend, id_userReceive, place, dtime, meetingMessage, requestState ) VALUES (".$id_user.", ".$id_user_chosen.", ".$place.", ".$place.", ".$dtime.", ".$meetingMessage.",0);";
+                    $query = "REPLACE INTO meeting_request (id_userSend, id_userReceive, place, dtime, meetingMessage, requestState ) VALUES (".$id_user.", ".$id_user_chosen.", ".$place.", ".$dtime.", ".$meetingMessage.",0);";
                     $res = mysqli_query($db, $query);
 
                     $error = mysqli_error($db);
