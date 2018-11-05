@@ -25,7 +25,9 @@
                 if (mysqli_num_rows($select)==1)
                 {
                     //Its a match
-                    mysqli_query($db, "UPDATE meeting_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userReceive=".$id_user_chosen.";");
+                    $sql = "UPDATE meeting_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userReceive=".$id_user_chosen.";";
+                    $sql .= "REPLACE INTO meeting_request (`id_userSend`, `id_userReceive`, `place`, `dtime`, `meetingMessage`, `requestState` ) VALUES (".$id_user.", ".$id_user_chosen.", '".$place."', ".$dtime.", '".$meetingMessage."', 0);";
+                    mysqli_multi_query($db,$sql);
 
                     //Call A match notification here
 
