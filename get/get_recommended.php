@@ -25,8 +25,23 @@
                 $langauge = $this->getWantToLearn();
                 $hobbies = $this->getMyHobbies();
 
-                $result = $this->getRecommended($langauge, $hobbies);
-                $this->out = $result;
+                if (!empty($langauge))
+                {
+                    $result = $this->getRecommended($langauge, $hobbies);
+                    $this->out = $result;
+                }
+                else
+                {
+                    $array = array(
+                        "status" => $status,
+                        "data" => "failure",
+                        "dataExit" => 1,
+                        "message" => "Data retrieved but user has not comply with required data"
+                    );
+    
+                    $this->out = json_encode($array);
+                }
+                
             }
 
 
