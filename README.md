@@ -68,3 +68,6 @@ Requests that fails to provide a valid token will be rejected with a status mess
 
 Database connections should not be and will not be present in the repo
 Connection file exists only on server and is only simple mysqli connection
+
+
+Jenkins

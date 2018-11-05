@@ -260,6 +260,37 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 
             break;
         }
+        
+        case 'set_meet':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/set_meet.php';
+                $obj = new set_meet($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+
+            break;
+        }
+
+        case 'set_like':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/set_like.php';
+                $obj = new set_like($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
 
         case 'list_users':
         {
@@ -273,6 +304,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             }
             break;
         }
+
 
         default:
             echo $_POST['request'] . ' is not a valid request';

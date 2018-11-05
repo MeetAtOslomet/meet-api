@@ -1,6 +1,6 @@
 <?php
 
-    class set_like
+    class set_meet
     {
         public $db;
         public $out;
@@ -13,15 +13,21 @@
             $json = json_decode($data);
             $id_user = $json->{'id_user'};
             $id_user_chosen = $json->{'id_user_chosen'};
+            $meetingMessage = $json->{'meetingMessage'};
+            $dtime = $json->{'dtime'};
+            $place = $json->{'place'};
+
 
             if (!empty($id_user) && !empty($id_user_chosen))
             {
-                $select = mysqli_query($db, "SELECT * FROM match_request WHERE id_userSend=".$id_user_chosen." AND id_userMatch=".$id_user.";";
+                $select = mysqli_query($db, "SELECT * FROM meeting_request WHERE id_userSend=".$id_user." AND id_userReceive=".$id_user_chosen.";");
 
                 if (mysqli_num_rows($select)==1)
                 {
                     //Its a match
-                    mysqli_query($db, "UPDATE match_request SET requestState=1 WHERE id_userSend=".$id_user_chosen."  AND id_userMatch=".$id_user.";");
+                    $sql = "UPDATE meeting_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userReceive=".$id_user_chosen.";";
+                    $sql .= "REPLACE INTO meeting_request (`id_userSend`, `id_userReceive`, `place`, `dtime`, `meetingMessage`, `requestState` ) VALUES (".$id_user.", ".$id_user_chosen.", '".$place."', ".$dtime.", '".$meetingMessage."', 0);";
+                    mysqli_multi_query($db,$sql);
 
                     //Call A match notification here
 
@@ -57,8 +63,8 @@
                 }
                 else
                 {
-                    $query = "REPLACE INTO match_request (id_userSend, id_userMatch, requestState) VALUES (".$id_user.", ".$id_user_chosen.", 0);"
-                    mysqli_query($db, $query);
+                    $query = "REPLACE INTO meeting_request (`id_userSend`, `id_userReceive`, `place`, `dtime`, `meetingMessage`, `requestState` ) VALUES (".$id_user.", ".$id_user_chosen.", '".$place."', ".$dtime.", '".$meetingMessage."', 0);";
+                    $res = mysqli_query($db, $query);
 
                     $error = mysqli_error($db);
 
