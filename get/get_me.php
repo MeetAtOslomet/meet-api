@@ -8,6 +8,7 @@
 
         function __construct($db, $data)
         {
+            $status = ($db == true) ? true : false;
             $json = json_decode($data);
             $id_user = $json->{'id_user'};
             $authenticationToken = $json->{'authenticationToken'};

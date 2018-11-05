@@ -14,7 +14,7 @@
         function __construct($db, $data)
         {
             $this->db = $db;
-            
+            $status = ($db == true) ? true : false;
             $json = json_decode($data);
             $id_user = $json->{'id_user'};
             $username = $json->{'username'};
