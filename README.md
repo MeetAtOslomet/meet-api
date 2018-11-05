@@ -14,6 +14,7 @@
 | get_user | yes | yes | Gets user based on username or user id |
 | get_hobbies | yes | no | Gets hobbies based on input, supports single number and multiple values like this "1,2,3,4" |
 | get_language | yes | no | Gets language based on input, supports single number and multiple values like this "1,2,3,4" |
+| user_language | yes | no | returns language details for user |
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
@@ -51,6 +52,8 @@ Url rewrite will probably be added at a later occasion
 |  | id_user | yes |
 |  | id_language | yes |
 |  | teachOrLearn | yes |
+| get_user_language | | |
+|  | id_user | yes |
 
 
 

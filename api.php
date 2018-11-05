@@ -56,6 +56,36 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_me':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/get_me.php';
+                $obj = new get_me($db, $_GET['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
+        case 'get_id_user':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/get_id_user.php';
+                $obj = new get_id_user($db, $_GET['username']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
         case 'get_hobbies':
         {
             require './get/get_hobbies.php';
@@ -70,6 +100,14 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             require './get/get_language.php';
             
             $obj = new get_language($db, (isset($_GET['language'])) ? $_GET['language'] : null);
+            echo $obj->out;
+            break;
+        }
+
+        case 'get_user_language':
+        {
+            require './get/get_user_language.php';
+            $obj = new get_user_language($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
             echo $obj->out;
             break;
         }
