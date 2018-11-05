@@ -26,7 +26,7 @@
                 {
                     //Its a match
                     $sql = "UPDATE meeting_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userReceive=".$id_user_chosen.";";
-                    $sql1 = " INTO meeting (`id_user1`, `id_user2`, `place`, `dtime`,`meetingMessage`) VALUES (".$id_user.",".$id_user_chosen.", '".$place."', ".$dtime.", ".$meetingMessage.");";
+                    $sql1 = " INSERT INTO meeting (`id_user1`, `id_user2`, `place`, `dtime`,`meetingMessage`) VALUES (".$id_user.",".$id_user_chosen.", '".$place."', ".$dtime.", ".$meetingMessage.");";
                     mysqli_query($db,$sql);
                     mysqli_query($db,$sql1);
 
