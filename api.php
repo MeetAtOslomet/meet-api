@@ -112,6 +112,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_user_invitation':
+        {
+            require './get/get_user_invitation.php';
+            $obj = new get_user_invitation($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            echo $obj->out;
+            break;
+        }
+
+
         case 'get_recommended':
         {
             if (hasKey($db, $authKey) == true)
