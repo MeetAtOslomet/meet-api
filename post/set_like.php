@@ -16,7 +16,7 @@
 
             if (!empty($id_user) && !empty($id_user_chosen))
             {
-                $select = mysqli_query($db, "SELECT * FROM match_request WHERE id_userSend=".$id_user." AND id_userMatch=".$id_user_chosen.";";
+                $select = mysqli_query($db, "SELECT * FROM match_request WHERE id_userSend=".$id_user." AND id_userMatch=".$id_user_chosen.";");
 
                 if (mysqli_num_rows($select)==1)
                 {
