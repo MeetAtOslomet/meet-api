@@ -95,6 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_user_hobbies':
+        {
+            require './get/get_user_hobbies.php';
+
+            $obj = new get_user_hobbies($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            echo $obj->out;
+            break;
+        }
+
         case 'get_language':
         {
             require './get/get_language.php';
