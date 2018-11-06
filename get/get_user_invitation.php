@@ -29,7 +29,7 @@ class get_user_invitation
             $array = array();
             while ($row = mysqli_fetch_array($res))
             {
-                $lang = new user_language(
+                $lang = new user_invitation(
                     $row['id_userSend'],
                     $row['id_userMatch'],
                     $row['requestState'],
