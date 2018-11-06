@@ -23,7 +23,7 @@
                     //Its a match
 
                     $sql = "UPDATE match_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userMatch=".$id_user_chosen.";";
-                    $sql1 = " INSERT INTO tandem (`id_tandem`,`id_user1`, `id_user2`, `conversationName`, `delete_conversation_user`,`delete_conversation_user`) VALUES ( NULL ,".$id_user.",".$id_user_chosen.", NULL , NULL , NULL);";
+                    $sql1 = " INSERT INTO tandem (`id_tandem`,`id_user1`, `id_user2`, `conversationName`, `delete_conversation_user`,`delete_conversation_user2`) VALUES ( NULL ,".$id_user.",".$id_user_chosen.", NULL , NULL , NULL);";
                     mysqli_query($db,$sql);
                     mysqli_query($db,$sql1);
 
