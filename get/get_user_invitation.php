@@ -5,7 +5,7 @@
  * Date: 06/11/2018
  * Time: 17:21
  */
-require './classes/user_invitation';
+require './classes/user_invitation.php';
 
 
 class get_user_invitation
