@@ -62,7 +62,7 @@
                 }
                 else
                 {
-                    $query = "REPLACE INTO match_request (`id_userSend`,`id_userMatch`, `requestState`) VALUES (".$id_user.", ".$id_user_chosen.", 0);"
+                    $query = "REPLACE INTO match_request (`id_userSend`,`id_userMatch`, `requestState`) VALUES (".$id_user.", ".$id_user_chosen.", 0);";
                     mysqli_query($db, $query);
 
                     $error = mysqli_error($db);
