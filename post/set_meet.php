@@ -26,8 +26,10 @@
                 {
                     //Its a match
                     $sql = "UPDATE meeting_request SET requestState=1 WHERE id_userSend=".$id_user."  AND id_userReceive=".$id_user_chosen.";";
-                    $sql .= "REPLACE INTO meeting_request (`id_userSend`, `id_userReceive`, `place`, `dtime`, `meetingMessage`, `requestState` ) VALUES (".$id_user.", ".$id_user_chosen.", '".$place."', ".$dtime.", '".$meetingMessage."', 0);";
-                    mysqli_multi_query($db,$sql);
+                    $sql1 = " INSERT INTO meeting (`id_meeting`,`id_user1`, `id_user2`, `place`, `dtime`,`meetingMessage`) VALUES ( NULL ,".$id_user.",".$id_user_chosen.", '".$place."', ".$dtime.", '".$meetingMessage."');";
+                    mysqli_query($db,$sql);
+                    mysqli_query($db,$sql1);
+
 
                     //Call A match notification here
 
