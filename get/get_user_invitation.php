@@ -30,8 +30,8 @@ class get_user_invitation
             while ($row = mysqli_fetch_array($res))
             {
                 $invit = new user_invitation(
-                    $row['id_userSend'],
                     $row['id_userMatch'],
+                    $row['id_userSend'],
                     $row['requestState'],
                     $row['first_name']
                 );
