@@ -66,7 +66,7 @@ class get_user_meeting
             else
             {
                 $query = "SELECT m.*, u.first_name FROM meeting AS m INNER JOIN (SELECT * FROM user ) AS u ON m.id_user1 = u.id_user WHERE id_user2 = '".$id_user."'";
-                $query2 = "SELECT m.*, u.first_name FROM meeting AS m INNER JOIN (SELECT * FROM user ) AS u ON m.id_user2 = u.id_user2 WHERE id_user1 = '".$id_user."'";
+                $query2 = "SELECT m.*, u.first_name FROM meeting AS m INNER JOIN (SELECT * FROM user ) AS u ON m.id_user2 = u.id_user WHERE id_user1 = '".$id_user."'";
 
                 $res = mysqli_query($db, $query);
 
