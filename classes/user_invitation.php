@@ -2,8 +2,9 @@
 
 class user_invitation
 {
-    public $id_userSend;
+
     public $id_userMatch;
+    public $id_userSend;
     public $requestState;
     public $name;
 
