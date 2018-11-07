@@ -16,6 +16,9 @@
 | get_language | yes | no | Gets language based on input, supports single number and multiple values like this "1,2,3,4" |
 | get_user_language | yes | no | returns language details for user |
 | get_user_hobbies | yes | no | returns hobbies for user |
+| get_user_invitation | yes | no | returns tandem invitation receive by the user |
+| get_user_meeting | yes | no | returns meeting invitations receive by the user |
+
 
 **NOTE** Query name should allways be in lowercase <br />
 Example usage https://meet.vlab.cs.hioa.no/api.php?request=heartbeat <br />
@@ -30,7 +33,9 @@ Url rewrite will probably be added at a later occasion
 | initPass_user | yes | yes | Sets first time password |
 | add_user | yes | yes | JSON data provied needs to comply with required database fields |
 | add_hobbies | yes | yes | Does not check if the entry exists and will throw error if field exists |
-| add_language | yes | yes | Does not check if the entry exists and will throw error if field exists |*
+| add_language | yes | yes | Does not check if the entry exists and will throw error if field exists |
+| set_like | yes | yes | Does not check if the entry exists and will throw error if field exists, send tandem invitation and change is state if the invitation already exist  |
+| set_meet | yes | yes | Does not check if the entry exists and will throw error if field exists, send meeting invitation and change is state if the invitation already exist |*
 
 
 | POST | Fields | Required | 
@@ -57,6 +62,17 @@ Url rewrite will probably be added at a later occasion
 |  | id_user | yes |
 | get_user_hobbies |  |  |
 |  | id_user | yes |
+| set_like |  |  |
+|  | id_userSend | yes |
+|  | id_userMatch | yes |
+|  | requestState | yes |
+| set_meet |  |  |
+|  | id_userSend | yes |
+|  | id_userReceive | yes |
+|  | place | no |
+|  | dtime | yes |
+|  | meetingMessage | no |
+|  | requestState | yes |
 
 
 
