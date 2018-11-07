@@ -10,7 +10,24 @@ class add_language
         $status = ($db == true) ? true : false;
 
         $json = json_decode($data);
-        $languageses = $json->{'id_language'};
+
+        $values = "";
+        $languageArray = $json->{'languages'};
+        for ($i = 0; $i < count($languageArray); $i++)
+        {
+            if ($languageArray[$i] == end($languageArray))
+            {
+                $values .= "('".$languageArray[$i]['id_user']."', '".$languageArray[$i]['id_language']."', '".$languageArray[$i]['teachOrLearn']."');";
+            }
+            else
+            {
+                $values .= "('".$languageArray[$i]['id_user']."', '".$languageArray[$i]['id_language']."', '".$languageArray[$i]['teachOrLearn']."'), ";
+            }
+        }
+
+
+
+        /*$languageses = $json->{'id_language'};
         $id_user = $json->{'id_user'};
         $teachOrLearn = $json->{'teachOrLearn'};
 
@@ -26,7 +43,7 @@ class add_language
             {
                 $values .= "('".$id_user."', '".$jH[$i]."', '".$teachOrLearn."'),";
             }
-        }
+        }*/
 
         $query = "INSERT INTO user_language (`id_user`, `id_language`,`teachOrLearn`) VALUES ".$values;
 
