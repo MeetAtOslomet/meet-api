@@ -69,7 +69,7 @@ class get_user_meeting
                 $query2 = "SELECT m.*, u.first_name FROM meeting AS m INNER JOIN (SELECT * FROM user ) AS u ON m.id_user2 = u.id_user2 WHERE id_user1 = '".$id_user."'";
 
                 $res = mysqli_query($db, $query);
-                $res2 = mysqli_query($db, $query2);
+
 
                 $array = array();
                 while ($row = mysqli_fetch_array($res))
@@ -84,7 +84,7 @@ class get_user_meeting
                         $row['meetingMessage']
                     );
                     array_push($array, $meeting);
-
+                    $res2 = mysqli_query($db, $query2);
                     while ($row2 = mysqli_fetch_array($res2))
                     {
                         $meeting2 = new user_meeting(
