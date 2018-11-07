@@ -72,6 +72,8 @@ class get_user_meeting
                 $res2 = mysqli_query($db, $query2);
 
                 $array = array();
+                if(mysqli_fetch_row($res))
+                {
                 while ($row = mysqli_fetch_array($res)) {
                     $meeting = new user_meeting(
                         $row['id_user2'],
@@ -84,9 +86,10 @@ class get_user_meeting
                     );
                     array_push($array, $meeting);
                 }
-
-
-                while ($row2 = mysqli_fetch_array($res2)) {
+                }
+                if(mysqli_fetch_row($res2))
+                {
+                    while ($row2 = mysqli_fetch_array($res2)) {
                         $meeting2 = new user_meeting(
                             $row2['id_user1'],
                             $row2['id_user2'],
@@ -97,9 +100,9 @@ class get_user_meeting
                             $row2['meetingMessage']
                         );
                         array_push($array, $meeting2);
+                    }
                 }
-
-                if (mysqli_num_rows($res) == 0)
+                if (mysqli_num_rows($res) == 0 && mysqli_num_rows($res2) )
                 {
                     $dat = array("status" => $status, "data" => null);
                     $this->out = json_encode($dat);
