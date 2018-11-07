@@ -29,7 +29,7 @@ class get_user_meeting
             $array = array();
             while ($row = mysqli_fetch_array($res))
             {
-                $invit = new user_meeting(
+                $invitmeeting = new user_meeting(
                     $row['id_userMatch'],
                     $row['id_userSend'],
                     $row['requestState'],
@@ -37,7 +37,7 @@ class get_user_meeting
                     $row['dtime'],
                     $row['meetingMessage']
                 );
-                array_push($array, $invit);
+                array_push($array, $invitmeeting);
             }
             if (mysqli_num_rows($res) == 0)
             {
