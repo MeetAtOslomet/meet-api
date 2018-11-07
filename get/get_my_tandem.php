@@ -38,8 +38,8 @@ class get_my_tandem
                             $row['id_user2'],
                             $row['id_user1'],
                             $row['conversationName'],
-                            $row['last_name'],
-                            $row['first_name']
+                            $row['first_name'],
+                            $row['last_name']
                             );
                         array_push($array, $meeting);
                     }
@@ -51,8 +51,8 @@ class get_my_tandem
                             $row2['id_user1'],
                             $row2['id_user2'],
                             $row2['conversationName'],
-                            $row2['last_name'],
-                            $row2['first_name']
+                            $row2['first_name'],
+                            $row2['last_name']
                         );
                         array_push($array, $meeting2);
                     }
