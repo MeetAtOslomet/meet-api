@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         case 'get_user_meeting':
         {
             require './get/get_user_meeting.php';
-            $obj = new get_user_meeting($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            $obj = new get_user_meeting($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null, (isset($_GET['choice'])) ? $_GET['choice'] : null);
             echo $obj->out;
             break;
         }
