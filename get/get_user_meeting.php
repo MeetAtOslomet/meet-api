@@ -85,7 +85,7 @@ class get_user_meeting
                     );
                     array_push($array, $meeting);
                     $res2 = mysqli_query($db, $query2);
-                    while ($row2 = mysqli_fetch_row($res2))
+                    while ($row2 = mysqli_fetch_array($res2))
                     {
                         $meeting2 = new user_meeting(
                             $row2['id_user1'],
