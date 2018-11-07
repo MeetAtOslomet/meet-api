@@ -18,7 +18,7 @@ require './classes/user_hobbies.php';
             }
             else
             {
-                $query = "SELECT uh.*, h.name FROM user_hobbies as uh INNER JOIN hobbies as h ON h.id_hobbies = uh.id_hobbies WHERE uh.id_user = ".$id_user.";"
+                $query = "SELECT uh.*, h.name FROM user_hobbies as uh INNER JOIN hobbies as h ON h.id_hobbies = uh.id_hobbies WHERE uh.id_user = ".$id_user.";";
                 $res = mysqli_query($db, $query);
                 $array = array();
                 while ($row = mysqli_fetch_array($res))

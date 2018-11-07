@@ -2,13 +2,13 @@
 /**
  * Created by IntelliJ IDEA.
  * User: ANRIEU Quentin
- * Date: 06/11/2018
- * Time: 17:21
+ * Date: 07/11/2018
+ * Time: 15:21
  */
-require './classes/user_invitation.php';
 
+require './classes/user_meeting.php';
 
-class get_user_invitation
+class get_user_meeting
 {
     public $db;
     public $out;
@@ -24,16 +24,18 @@ class get_user_invitation
         }
         else
         {
-            $query = "SELECT mr.*, u.first_name FROM match_request AS mr INNER JOIN (SELECT * FROM user ) AS u ON mr.id_userSend = u.id_user WHERE id_userMatch = '".$id_user."' AND requestState=0 ;";
+            $query = "SELECT mr.*, u.first_name FROM meeting_request AS mr INNER JOIN (SELECT * FROM user ) AS u ON mr.id_userSend = u.id_user WHERE id_userMatch = '".$id_user."' AND requestState=0 ;";
             $res = mysqli_query($db, $query);
             $array = array();
             while ($row = mysqli_fetch_array($res))
             {
-                $invit = new user_invitation(
+                $invit = new user_meeting(
                     $row['id_userMatch'],
                     $row['id_userSend'],
                     $row['requestState'],
-                    $row['first_name']
+                    $row['first_name'],
+                    $row['dtime'],
+                    $row['meetingMessage']
                 );
                 array_push($array, $invit);
             }

@@ -128,7 +128,13 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             echo $obj->out;
             break;
         }
-
+        case 'get_user_meeting':
+        {
+            require './get/get_user_invitation.php';
+            $obj = new get_user_meeting($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            echo $obj->out;
+            break;
+        }
 
         case 'get_recommended':
         {
