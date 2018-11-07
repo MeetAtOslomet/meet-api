@@ -18,6 +18,7 @@
 | get_user_hobbies | yes | no | returns hobbies for user |
 | get_user_invitation | yes | no | returns tandem invitation receive by the user |
 | get_user_meeting | yes | no | returns meeting invitations receive by the user |
+| get_my_tandem | yes | no | returns tandem list for one user |
 
 
 **NOTE** Query name should allways be in lowercase <br />
