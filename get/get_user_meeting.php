@@ -72,8 +72,7 @@ class get_user_meeting
 
 
                 $array = array();
-                while ($row = mysqli_fetch_array($res))
-                {
+                while ($row = mysqli_fetch_array($res)) {
                     $meeting = new user_meeting(
                         $row['id_user2'],
                         $row['id_user1'],
@@ -84,9 +83,11 @@ class get_user_meeting
                         $row['meetingMessage']
                     );
                     array_push($array, $meeting);
-                    $res2 = mysqli_query($db, $query2);
-                    while ($row2 = mysqli_fetch_array($res2))
-                    {
+                }
+
+                $res2 = mysqli_query($db, $query2);
+                
+                while ($row2 = mysqli_fetch_array($res2)) {
                         $meeting2 = new user_meeting(
                             $row2['id_user1'],
                             $row2['id_user2'],
@@ -98,6 +99,7 @@ class get_user_meeting
                         );
                         array_push($array, $meeting2);
                 }
+
                 if (mysqli_num_rows($res) == 0)
                 {
                     $dat = array("status" => $status, "data" => null);
@@ -112,5 +114,5 @@ class get_user_meeting
 
         }
     }
-    }
+
 }
