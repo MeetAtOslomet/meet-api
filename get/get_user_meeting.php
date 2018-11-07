@@ -24,7 +24,7 @@ class get_user_meeting
         }
         else
         {
-            $query = "SELECT mr.*, u.first_name FROM meeting_request AS mr INNER JOIN (SELECT * FROM user ) AS u ON mr.id_userSend = u.id_user WHERE id_userMatch = '".$id_user."' AND requestState=0 ;";
+            $query = "SELECT mr.*, u.first_name FROM meeting_request AS mr INNER JOIN (SELECT * FROM user ) AS u ON mr.id_userSend = u.id_user WHERE id_userReceive = '".$id_user."' AND requestState=0 ;";
             $res = mysqli_query($db, $query);
             $array = array();
             while ($row = mysqli_fetch_array($res))
