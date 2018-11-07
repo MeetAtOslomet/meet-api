@@ -102,7 +102,7 @@ class get_user_meeting
                         array_push($array, $meeting2);
                     }
                 }
-                if (mysqli_num_rows($res) == 0 && mysqli_num_rows($res2)== 0 )
+                if (mysqli_num_rows($res) == 0 AND mysqli_num_rows($res2)== 0 )
                 {
                     $dat = array("status" => $status, "data" => null);
                     $this->out = json_encode($dat);
