@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         case 'get_my_tandem':
         {
             require './get/get_my_tandem.php';
-            $obj = new get_user_invitation($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            $obj = new get_my_tandem($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
             echo $obj->out;
             break;
         }

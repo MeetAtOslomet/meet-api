@@ -11,9 +11,8 @@ class get_my_tandem
 
     public $db;
     public $out;
-    public $choice;
 
-    function __construct($db, $data, $choice)
+    function __construct($db, $data)
     {
         $id_user = $data;
         $status = ($db == true) ? true : false;
