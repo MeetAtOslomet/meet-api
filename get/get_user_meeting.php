@@ -72,7 +72,7 @@ class get_user_meeting
                 $res2 = mysqli_query($db, $query2);
 
                 $array = array();
-                if(mysqli_fetch_row($res))
+                if(!empty($res))
                 {
                 while ($row = mysqli_fetch_array($res)) {
                     $meeting = new user_meeting(
@@ -87,7 +87,7 @@ class get_user_meeting
                     array_push($array, $meeting);
                 }
                 }
-                if(mysqli_fetch_row($res2))
+                if(!empty($res2))
                 {
                     while ($row2 = mysqli_fetch_array($res2)) {
                         $meeting2 = new user_meeting(
