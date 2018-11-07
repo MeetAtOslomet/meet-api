@@ -30,10 +30,11 @@ class get_user_meeting
             while ($row = mysqli_fetch_array($res))
             {
                 $invitmeeting = new user_meeting(
-                    $row['id_userMatch'],
+                    $row['id_userReceive'],
                     $row['id_userSend'],
                     $row['requestState'],
                     $row['first_name'],
+                    $row['place'],
                     $row['dtime'],
                     $row['meetingMessage']
                 );
