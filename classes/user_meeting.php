@@ -8,8 +8,8 @@
 
 class user_meeting
 {
+    public $id_user;
     public $id_userSend;
-    public $id_userReceive;
     public $requestState;
     public $name;
     public $dtime;
@@ -18,7 +18,7 @@ class user_meeting
 
     function __construct($id_user, $id_userSend, $requestState, $name, $dtime, $meetingMessage)
     {
-        $this->id_userReceive = $id_user;
+        $this->id_user = $id_user;
         $this->id_userSend = $id_userSend;
         $this->requestState = $requestState;
         $this->name = (isset($name) ? $name : "");
