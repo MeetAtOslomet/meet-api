@@ -158,6 +158,13 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+        case 'get_campus':
+        {
+            require './get/get_campus.php';
+            $obj = new get_campus($db, (isset($_GET['data'])) ? $_GET['data'] : null);
+            echo $obj->out;
+        }
+
 
         default:
             echo "Defaulted";
