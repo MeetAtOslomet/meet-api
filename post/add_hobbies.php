@@ -27,7 +27,7 @@
                 }
             }
 
-            $query = "INSERT INTO user_hobbies (`id_user`, `id_hobbies`) VALUES ".$values;
+            $query = "REPLACE INTO user_hobbies (`id_user`, `id_hobbies`) VALUES ".$values;
 
             $result = mysqli_query($db, $query);
             $error = mysqli_error($db);

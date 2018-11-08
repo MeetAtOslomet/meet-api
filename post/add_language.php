@@ -10,18 +10,19 @@ class add_language
         $status = ($db == true) ? true : false;
 
         $json = json_decode($data);
-
+        print_r($json);
         $values = "";
         $languageArray = $json->{'languages'};
         for ($i = 0; $i < count($languageArray); $i++)
         {
+            print_r($languageArray[$i]);
             if ($languageArray[$i] == end($languageArray))
             {
-                $values .= "('".$languageArray[$i]['id_user']."', '".$languageArray[$i]['id_language']."', '".$languageArray[$i]['teachOrLearn']."');";
+                $values .= "('".$languageArray[$i]->{'id_user'}."', '".$languageArray[$i]->{'id_language'}."', '".$languageArray[$i]->{'teachOrLearn'}."');";
             }
             else
             {
-                $values .= "('".$languageArray[$i]['id_user']."', '".$languageArray[$i]['id_language']."', '".$languageArray[$i]['teachOrLearn']."'), ";
+                $values .= "('".$languageArray[$i]->{'id_user'}."', '".$languageArray[$i]->{'id_language'}."', '".$languageArray[$i]->{'teachOrLearn'}."'), ";
             }
         }
 
@@ -45,7 +46,7 @@ class add_language
             }
         }*/
 
-        $query = "INSERT INTO user_language (`id_user`, `id_language`,`teachOrLearn`) VALUES ".$values;
+        $query = "REPLACE INTO user_language (`id_user`, `id_language`,`teachOrLearn`) VALUES ".$values;
 
         $result = mysqli_query($db, $query);
         $error = mysqli_error($db);
