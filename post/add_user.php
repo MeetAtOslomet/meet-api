@@ -18,7 +18,7 @@
             }
             $this->status = $status;
             $json = json_decode($data);
-            var_dump($json);
+            //var_dump($json);
             $usr = new user(
                 $json->{'username'},
                 $json->{'first_name'},
@@ -38,6 +38,7 @@
             }
             else
             {
+
                 $array = array(
                     "status" => $status,
                     "data" => "denied",
@@ -60,7 +61,7 @@
                 $sqlData = mysqli_fetch_assoc($res);
                 $id_user = $sqlData['id_user'];
                 //Update
-                $query = "UPDATE User SET 
+                $query = "UPDATE user SET 
                 first_name='".$user->first_name."', 
                 last_name='".$user->last_name."',
                 hide_last_name='".$user->hide_last_name."',

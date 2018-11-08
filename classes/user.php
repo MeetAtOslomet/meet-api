@@ -54,9 +54,9 @@
         {
             if (!empty($this->username) &&
                 !empty($this->first_name) && 
-                !empty($this->type) && 
+                is_numeric($this->type) && 
                 !empty($this->age) &&
-                !empty($this->id_campus))
+                is_numeric($this->id_campus))
             {
                 return true;
             }
