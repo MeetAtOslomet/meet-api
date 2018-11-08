@@ -54,7 +54,7 @@
         function update_database($user)
         {
             $query = null;
-            print_r($user);
+            //print_r($user);
             $res = mysqli_query($this->db, "SELECT id_user, username FROM `user` WHERE username = '".$user->username."';");
             if (mysqli_num_rows($res)== 1)
             {
