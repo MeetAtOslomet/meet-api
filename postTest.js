@@ -21,6 +21,12 @@ var obj = {
     biography: "Nada"
 };
 
+var addHobbies = {
+    id_user: 1,
+    id_hobbies: "3,5,6"
+}
+
+
 var jData = JSON.stringify(obj);
 
 
@@ -30,17 +36,21 @@ $.ajax({
     data : {
         request: "add_user",
         data: jData,
-        authenticationToken: ""
+        authenticationToken: "2085b12df5680d4c0bb58490bfbeaee7ca21b56d8645fe66225f3f0ea1649dde"
     },
     success: function(data)
     {
         console.log(data);
-        alert(data);
+        //alert(data);
     },
     failure: function(errMsg)
     {
         console.error(errMsg);
-        alert(errMsg);
+        //alert(errMsg);
     }
  
 });
+
+
+"{"username":"Admin","first_name":"Admin","last_name":"Ministrator","type":"1","gender":"0","age":22,"hide_last_name":false,"hide_age":false,"id_campus":36,"biography":"Nada"}"
+"{"username":"s326311","first_name":"Brage ","last_name":"Skjønborg ","hide_last_name":0,"type":0,"gender":1,"age":658026566420,"hide_age":0,"id_campus":1,"biography":""}"
