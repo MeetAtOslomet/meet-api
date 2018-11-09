@@ -66,7 +66,6 @@ Url rewrite will probably be added at a later occasion
 | set_like |  |  |
 |  | id_userSend | yes |
 |  | id_userMatch | yes |
-|  | requestState | yes |
 | set_meet |  |  |
 |  | id_userSend | yes |
 |  | id_userReceive | yes |
@@ -74,6 +73,15 @@ Url rewrite will probably be added at a later occasion
 |  | dtime | yes |
 |  | meetingMessage | no |
 |  | requestState | yes |
+
+
+| GET | Fields | Required | Comment |
+| --- | --- | --- | --- |
+| get_recommended |     |    |      |
+|     | request | yes | needs to be "get_recommended" |
+|     | authenticationToken | yes | will be rejected if not provided |
+|     | data | yes | needs to be a json object with "id_user" and "username" |
+
 
 
 
