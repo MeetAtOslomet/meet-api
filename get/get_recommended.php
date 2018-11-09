@@ -112,7 +112,9 @@
                 INNER JOIN language AS l ON ul.id_language = l.id_language ) AS l ON u.id_user = l.id_user 
             LEFT JOIN ( SELECT uh.*, h.name FROM user_hobbies AS uh 
                 INNER JOIN hobbies AS h ON uh.id_hobbies = h.id_hobbies WHERE uh.id_hobbies IN (".$hobbyStr.") ) AS h ON u.id_user = h.id_user  
-            WHERE l.id_language IN (".$langStr.") AND u.id_user !=".$this->id_user.";";
+            LEFT JOIN ( SELECT * FROM match_request WHERE id_userSend = ".$this->id_user." OR id_userMatch = ".$this->id_user.") AS mr
+            	ON (u.id_user = mr.id_userSend OR u.id_user = mr.id_userMatch)
+            WHERE l.id_language IN (".$langStr.") AND mr.requestState = 0 AND u.id_user !=".$this->id_user.";";
 
             $user = array();
             $language = array();
