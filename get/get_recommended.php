@@ -107,7 +107,7 @@
 
         function getRecommended($langStr, $hobbyStr)
         {
-            $query = "SELECT * FROM user AS u 
+            $query = "SELECT u.*, l.id_language, l.lname, l.teachOrLearn, h.id_hobbies, h.name FROM user AS u 
             INNER JOIN ( SELECT ul.*, l.name AS lname FROM user_language AS ul 
                 INNER JOIN language AS l ON ul.id_language = l.id_language ) AS l ON u.id_user = l.id_user 
             LEFT JOIN ( SELECT uh.*, h.name FROM user_hobbies AS uh 
@@ -204,8 +204,8 @@
             $newRecommend = array();
             for ($i = 0; $i < count($recommend); $i++)
             {
-                $user = $recommend[$i]->user;
-                $userId = $user->id_user;
+                $_user = $recommend[$i]->user;
+                $userId = $_user->id_user;
                 if (!in_array($userId, $toRemove))
                 {
                     array_push($newRecommend, $recommend[$i]);
