@@ -22,7 +22,7 @@
                 {
                     //Its a match
                     //Swapped id to make the reverse lookup to update exisint request since user posting approve has a pending request
-                    $sql = "UPDATE match_request SET requestState=1 WHERE id_userSend=".$id_user_chosen."  AND id_userMatch=".$id_user.";";
+                    $sql = "UPDATE match_request SET requestState=1 WHERE id_userSend=".$id_user_chosen." AND id_userMatch=".$id_user.";";
                     //Removed id_tandem from query since it's handled by database (AUTO_INCREMENT)
                     $sql1 = " INSERT INTO tandem (`id_user1`, `id_user2`, `conversationName`, `delete_conversation_user`,`delete_conversation_user2`) VALUES (".$id_user.",".$id_user_chosen.", NULL , NULL , NULL);";
                     mysqli_query($db,$sql);
