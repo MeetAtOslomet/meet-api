@@ -8,18 +8,18 @@
 
 class tandem
 {
-    public $id_user;
+    public $id_tandem;
+    public $id_user1;
     public $id_user2;
     public $conversationName;
     public $name;
     public $lastname;
 
-    function __construct($id_user, $id_user2, $conversationName, $name, $lastname)
+    function __construct($id_tandem, $id_user1, $id_user2, $conversationName)
     {
-        $this->id_user = $id_user;
+        $this->id_tandem = $id_tandem;
+        $this->id_user1 = $id_user1;
         $this->id_user2 = $id_user2;
         $this->conversationName =(isset($conversationName) ? $conversationName : "");
-        $this->name = $name;
-        $this->lastname = $lastname;
     }
 }

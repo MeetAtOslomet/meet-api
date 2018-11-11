@@ -90,6 +90,30 @@
             return $out;
         }
 
+        function getFilteredUser_Array()
+        {
+            $array = array(
+                "username" => $this->username,
+                "first_name" => $this->first_name,
+                "type" => $this->type,
+                "gender" => $this->gender,
+                "id_campus" => $this->id_campus,
+                "biographgy" => $this->biography
+            );
+
+            if ($this->hide_last_name == false)
+            {
+                $array["last_name"] = $this->last_name;
+            }
+            if ($this->hide_age == false)
+            {
+                $array["age"] = $this->age;
+            }
+            return $array;
+        }
+
+
+
     }
 
 
