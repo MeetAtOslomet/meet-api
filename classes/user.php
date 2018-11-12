@@ -86,6 +86,12 @@
             {
                 $array["age"] = $this->age;
             }
+            if (!empty($this->id_user))
+            {
+                $array["id_user"] = $this->id_user;
+            }
+
+
             $out = json_encode($array);
             return $out;
         }
@@ -108,6 +114,10 @@
             if ($this->hide_age == false)
             {
                 $array["age"] = $this->age;
+            }
+            if (!empty($this->id_user))
+            {
+                $array["id_user"] = $this->id_user;
             }
             return $array;
         }

@@ -11,6 +11,7 @@ require './classes/user.php';
         function __construct($db, $data)
         {
             $this->db = $db;
+            $status = ($db == true) ? true : false;
             $json = json_decode($data);
             $id_user = $data;
 
@@ -61,13 +62,12 @@ require './classes/user.php';
 
                 
             }
+            $res = array(
+                "status" => $status,
+                "data" => $tandemsResult
+            );
 
-
-            $out = json_encode($tandemsResult);
-            echo $out;
-
-
-
+            $this->out = json_encode($res);
         }
 
         function getIndexIfExists($array, $id)

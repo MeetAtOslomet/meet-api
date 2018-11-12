@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
         {
             require './get/get_tandem.php';
             $obj = new get_tandem($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
-            //echo $obj->out;
+            echo $obj->out;
             break;
         }
         case 'get_user_meeting':
@@ -149,6 +149,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             echo $obj->out;
             break;
         }
+
+        case 'get_requests':
+        {
+            require './get/get_requests.php';
+            $obj = new get_requests($db, (isset($_GET['id_user'])) ? $_GET['id_user'] : null);
+            echo $obj->out;
+            break;
+        }
+
 
         case 'get_recommended':
         {
