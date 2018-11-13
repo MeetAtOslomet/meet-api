@@ -36,8 +36,8 @@ class get_requests
                 $row["id_campus"],
                 $row["biography"]
             );
-            $userArray = $user->getFilteredUser_Array();
-            array_push($match, $userArray);
+            $userO = $user->getFilteredUser_Object();
+            $match["user"] = $userO;
 
             array_push($outArray, $match);
         }

@@ -122,6 +122,31 @@
             return $array;
         }
 
+        function getFilteredUser_Object()
+        {
+            $obj = new stdClass();
+            $obj->username = $this->username;
+            $obj->first_name = $this->first_name;
+            $obj->type = $this->type;
+            $obj->gender = $this->gender;
+            $obj->id_campus = $this->id_campus;
+            $obj->biography = $this->biography;
+
+            if ($this->hide_last_name == false)
+            {
+                $obj->last_name = $this->last_name;
+            }
+            if ($this->hide_age == false)
+            {
+                $obj->age = $this->age;
+            }
+            if (!empty($this->id_user))
+            {
+                $obj->id_user = $this->id_user;
+            }
+
+            return $obj;
+        }
 
 
     }

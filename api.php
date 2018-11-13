@@ -179,8 +179,16 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             require './get/get_campus.php';
             $obj = new get_campus($db, (isset($_GET['data'])) ? $_GET['data'] : null);
             echo $obj->out;
+            break;
         }
 
+        case 'sign_out':
+        {
+            require './get/sign_out.php';
+            $obj = new sign_out($db, (isset($_GET['data'])) ? $_GET['data'] : null);
+            echo $obj->out;
+            break;
+        }
 
         default:
             echo "Defaulted";
