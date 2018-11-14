@@ -19,6 +19,7 @@
 | get_user_invitation | yes | no | returns tandem invitation receive by the user |
 | get_user_meeting | yes | no | returns meeting invitations receive by the user |
 | get_my_tandem | yes | no | returns tandem list for one user |
+| receive_message | yes | yes | Once called view state will switch to viewed |
 
 
 **NOTE** Query name should allways be in lowercase <br />
@@ -37,6 +38,7 @@ Url rewrite will probably be added at a later occasion
 | add_language | yes | yes | Does not check if the entry exists and will throw error if field exists |
 | set_like | yes | yes | Does not check if the entry exists and will throw error if field exists, send tandem invitation and change is state if the invitation already exist  |
 | set_meet | yes | yes | Does not check if the entry exists and will throw error if field exists, send meeting invitation and change is state if the invitation already exist |*
+| send_message | yes | yes | Controls details and sends message |
 
 
 | POST | Fields | Required | 
@@ -73,7 +75,12 @@ Url rewrite will probably be added at a later occasion
 |  | dtime | yes |
 |  | meetingMessage | no |
 |  | requestState | yes |
-
+| send_message |    |   |
+|  | id_userSend | yes |
+|  | id_userReceive | yes |
+|  | id_tandem | yes |
+|  | authenticationToken | yes |
+|  | message | yes |
 
 | GET | Fields | Required | Comment |
 | --- | --- | --- | --- |
@@ -81,6 +88,10 @@ Url rewrite will probably be added at a later occasion
 |     | request | yes | needs to be "get_recommended" |
 |     | authenticationToken | yes | will be rejected if not provided |
 |     | data | yes | needs to be a json object with "id_user" and "username" |
+| receive_message |     |    |      |
+|     | id_tandem | yes |    |
+|     | id_user   | yes |    |
+|     | authenticationToken | yes |
 
 
 
