@@ -190,6 +190,23 @@ if ($_SERVER['REQUEST_METHOD'] === "GET")
             break;
         }
 
+
+        case 'receive_message':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './get/receive_message.php';
+                $obj = new receive_message($db, (isset($_GET['data'])) ? $_GET['data'] : null);
+                echo $obj->out;   
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
+
         default:
             echo "Defaulted";
             # code...
@@ -363,6 +380,21 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             else
             {
                 echo "Invalid" . false;
+            }
+            break;
+        }
+
+        case 'send_message':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/send_message.php';
+                $obj = new send_message($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
             }
             break;
         }
