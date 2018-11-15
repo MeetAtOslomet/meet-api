@@ -39,8 +39,11 @@ class send_message
             $authenticty = mysqli_query($db, "SELECT * FROM `auth_users` AS au INNER JOIN (SELECT id_user, username FROM user WHERE id_user = '".$id_userSend."') AS u ON u.username = au.username WHERE au.token = '".$authToken."';");
             if (mysqli_num_rows($authenticty) == 1)
             {
-                $send = mysqli_query($db, "INSERT INTO send_message (`id_userSend`, `id_userReceive`, `id_tandem`, `message`) VALUES
-                ('".$id_userSend."','".$id_userReceive."','".$id_tandem."','".$messge."');");
+                $d = new DateTime();
+                $sendTime = $d->getTimestamp(); 
+
+                $send = mysqli_query($db, "INSERT INTO send_message (`id_userSend`, `id_userReceive`, `id_tandem`, `dtime`, `message`) VALUES
+                ('".$id_userSend."','".$id_userReceive."','".$id_tandem."', '".$sendTime."', '".$messge."');");
                 
                 $error = mysqli_error($db);
                 $errorOut = (string)$error;
