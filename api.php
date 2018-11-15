@@ -1,6 +1,6 @@
 <?php
 require '../db.php';
-require '../key.php';
+include '../key.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -399,6 +399,35 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
+        case 'add_fmc_token':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/add_fmc_token.php';
+                $obj = new add_fmc_token($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
+
+        case 'push_data':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './push.php';
+                $obj = new push($db, $fcmKey, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+            break;
+        }
 
         default:
             echo $_POST['request'] . ' is not a valid request';
