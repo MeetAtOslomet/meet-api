@@ -57,6 +57,38 @@ class send_message
                         "message" => "Data uploaded and updated successfully"
                     );
 
+                    ///////////////////////////////////////////////////////
+                    ///        SENDING Message to FCM Pusher            ///
+                    ///////////////////////////////////////////////////////
+
+                    $usrQ = mysqli_query($db, "SELECT username FROM user WHERE id_user = '".$id_userReceive."';");
+                    if (mysqli_num_rows($usrQ) == 1)
+                    {
+                        $dat = mysqli_fetch_assoc($usrQ);
+                        $username = $dat['username'];
+
+                        $pushData = array(
+                            "username" => $username,
+                            "type" => "data",
+                            "title" => "Chat",
+                            "body" => "Someone sent you a message",
+                            "data" => array(
+                                "target" => "MESSAGING",
+                                "action" => "UPDATE"
+                            )
+                        );
+    
+    
+                        require_once './push.php';
+                        $obj = new push($db, $GLOBALS['fcmKey'], json_encode($pushData));
+                        $fcm = $obj->out;
+                        $array["FCM"] = $fcm;
+                    }
+
+
+
+            
+
                     $this->out = json_encode($array);
                 }
                 else

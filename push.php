@@ -17,6 +17,9 @@ class push
         $devToken = $this->GetDeviceToken($username);
         if ($devToken != false)
         {
+            $title = $json->{"title"};
+            $body = $json->{"body"};
+
             if ($type == "notification")
             {
 
@@ -27,8 +30,8 @@ class push
                 $payload = array(
                     "to" => $devToken,
                     "notification" => array(
-                        "title" => "Api Push",
-                        "body" => "Push from Api server",
+                        "title" => $title,
+                        "body" => $body,
                         "icon" => "ic_launcher"
                     ),
                     "data" => array(
