@@ -10,12 +10,12 @@ class add_language
         $status = ($db == true) ? true : false;
 
         $json = json_decode($data);
-        print_r($json);
+        //print_r($json);
         $values = "";
         $languageArray = $json->{'languages'};
         for ($i = 0; $i < count($languageArray); $i++)
         {
-            print_r($languageArray[$i]);
+            //print_r($languageArray[$i]);
             if ($languageArray[$i] == end($languageArray))
             {
                 $values .= "('".$languageArray[$i]->{'id_user'}."', '".$languageArray[$i]->{'id_language'}."', '".$languageArray[$i]->{'teachOrLearn'}."');";
