@@ -29,18 +29,20 @@ class push
                 $dataPayload = $json->{"data"};
                 $payload = array(
                     "to" => $devToken,
-                    "notification" => array(
+                    /*"notification" => array(
                         "title" => $title,
                         "body" => $body,
                         "icon" => "ic_launcher"
-                    ),
+                    ),*/
                     "data" => array(
+                        "title" => $title,
+                        "body" => $body,
                         "data" => $dataPayload
                     )
                 );
-                $this->out = var_dump($payload);
+                //$this->out = var_dump($payload);
                 $jsonPayLoad = json_encode($payload);
-                $this->out .= $this->SendPushData($jsonPayLoad);
+                $this->SendPushData($jsonPayLoad);
 
             }
         }
@@ -91,7 +93,7 @@ class push
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         $result = curl_exec($ch);
-        $this->out = var_dump($result);
+        //$this->out = var_dump($result);
         if ($result === FALSE)
         {
             $array = array(

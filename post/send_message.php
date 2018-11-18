@@ -73,6 +73,7 @@ class send_message
                             "title" => "Chat",
                             "body" => "Someone sent you a message",
                             "data" => array(
+                                "timestamp" => $sendTime,
                                 "target" => "MESSAGING",
                                 "action" => "UPDATE"
                             )
