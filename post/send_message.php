@@ -43,7 +43,7 @@ class send_message
                 $sendTime = $d->getTimestamp(); 
 
                 $send = mysqli_query($db, "INSERT INTO send_message (`id_userSend`, `id_userReceive`, `id_tandem`, `dtime`, `message`) VALUES
-                ('".$id_userSend."','".$id_userReceive."','".$id_tandem."', '".$sendTime."', '".$messge."');");
+                ('".$id_userSend."','".$id_userReceive."','".$id_tandem."', '".$sendTime."', '".mysqli_real_escape_string($db, $messge)."');");
                 
                 $error = mysqli_error($db);
                 $errorOut = (string)$error;
