@@ -1,4 +1,8 @@
 <?php
+/*
+* @Desc: Outer most layer(controller laye) to handle all incoming request ot the API
+* @Require: $db (simple mysqli class) exist only on server
+*/
 require '../db.php';
 include_once '../key.php';
 
