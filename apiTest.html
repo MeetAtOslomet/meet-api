@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="apiTest.css" />
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script src="apiTest.js"></script>
+    </head>
+    <body>
+        <h1>Api Tester</h1>
+        <h3>Url</h3>
+        <input id="url" type="text" style="width: 100vw;" value="http://localhost/api/api.php" />
+        <div style="display: flex; width: 100vw;">
+            <div style="width:50vw;">
+                <h3>Request</h3>
+                <input id="apiRequest" type="text" style="width: 45vw;" />
+                <h3>Authentication token</h3>
+                <input id="token" type="text" style="width: 45vw;" />
+
+                <h3>Paramter</h3>
+                <textarea id="apiData" class="output-area"></textarea>
+                <p id="paramterError" style="color:crimson;"></p>
+                <div>
+                    <button onclick="runGet();">Run Get</button>
+                    <button onclick="runPost();">Run Post</button>
+                </div>
+            </div>
+            <div style="width: 50vw;">
+                <h3>Output</h3>
+                <textarea id="output" class="output-area" style="color:white;" disabled></textarea>
+            </div>
+        </div>
+        <script>
+            "use strict";
+            var url = document.getElementById("url").value;
+
+            var output = document.getElementById("output");
+
+            async function runPost()
+            {
+                url = document.getElementById("url").value;
+                output.value = "";
+                let error = false;
+                let requestText = document.getElementById("apiRequest").value;
+                let dataText = document.getElementById("apiData").value;
+
+                var data;
+                try{
+                    data = JSON.parse(dataText);
+                } catch(e)
+                {
+                    error = true;
+                    let erO = document.getElementById("paramterError");
+                    erO.innerHTML = e.toString();
+                }
+                if (error)
+                {
+                    return;
+                }
+
+                let param = {};
+                param.authenticationToken = document.getElementById("token").value;
+                param.request = requestText;
+                param.data = JSON.stringify(data);
+                //param.data = data;
+
+                const response = await post(url, param);
+                output.value += "\nResponse is:\n";
+                output.value += JSON.stringify(response, undefined, 4);
+
+
+            }
+
+            async function runGet()
+            {
+                url = document.getElementById("url").value;
+                output.value = "";
+                let error = false;
+                let requestText = document.getElementById("apiRequest").value;
+
+                let getUrl = url + "?request="+requestText;
+                const response = await get(getUrl);
+                output.value += "\nResponse is:\n";
+                output.value += JSON.stringify(response, undefined, 4);
+
+            }
+
+            /**
+             * {
+                    "authenticationToken": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+                    "data": {
+                        "id_user": "19"
+                    }
+                }
+             * 
+             * */
+
+            
+
+
+
+
+
+        </script>
+    </body>
+</html>

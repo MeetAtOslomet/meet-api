@@ -104,9 +104,45 @@ Requests that fails to provide a valid token will be rejected with a status mess
 
 
 **NOTE**
+api.php Includes the following:
+db.php
+key.php
 
-Database connections should not be and will not be present in the repo
-Connection file exists only on server and is only simple mysqli connection
+The purpose of key.php is to keep the secrets for firebase.
+The purpose of db.php is to create the database connection.
+
+Changning valus for Key.php is required to change ownership and control over notifications etc.
+No other changes are required other than chaning keys in key.php. The rest is dynamic
+
+Database connections file should not be and will not be present in the repo 
 
 
-Jenkins
+Skeleton of db.php
+```PHP
+<?php
+$Server = "undefined";
+$Usr = "undefined";
+$Pwd = "undefined";
+$DB = "undefined";
+
+$db = mysqli_connect($Server, $Usr, $Pwd, $DB);
+
+if ($db == false)
+{
+    echo "Connection failed";
+    die(print_r (mysqli_errors(), true));
+}
+
+?>
+
+```
+
+Skeleton of key.php
+```PHP
+<?php
+    $secret = "Firebase secret";
+    $fmcKey = "Firebase cloud messaging key";
+    $GLOBALS['fcmKey'] = $fcmKey;
+?>
+
+```

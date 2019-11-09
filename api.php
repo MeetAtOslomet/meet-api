@@ -219,6 +219,21 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
 {
     switch ($_POST['request'])
     {
+        case 'delete_user':
+        {
+            if (hasKey($db, $authKey) == true)
+            {
+                require './post/del_user.php';
+                $obj = new del_user($db, $_POST['data']);
+                echo $obj->out;
+            }
+            else
+            {
+                echo hasKeyJson(false);
+            }
+        break;
+        }
+
         case 'register_user':
         {
             //echo 'Inndata: ' . $_POST['data'];
