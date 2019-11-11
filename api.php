@@ -1,4 +1,11 @@
 <?php
+/*
+* @Desc: Outer most layer(controller layer) to handle all incoming request to the API
+* @Require: db.php (simple php class) only presnet on server
+* @Include: key.php (simple php class) only present on server, sets GLOBAL for fmcKey, serving as definer for notifications
+*/
+
+
 require '../db.php';
 include_once '../key.php';
 
