@@ -91,6 +91,9 @@ Url rewrite will probably be added at a later occasion
 |  | id_user | yes  |
 |  | id_language | yes |
 |  | teachOrLearn | no |
+|  delete_hobbies |  |   |
+|  | id_user | yes |
+|  | id_hobbies | yes |
 
 | GET | Fields | Required | Comment |
 | --- | --- | --- | --- |
