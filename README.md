@@ -39,6 +39,9 @@ Url rewrite will probably be added at a later occasion
 | set_like | yes | yes | Does not check if the entry exists and will throw error if field exists, send tandem invitation and change is state if the invitation already exist  |
 | set_meet | yes | yes | Does not check if the entry exists and will throw error if field exists, send meeting invitation and change is state if the invitation already exist |*
 | send_message | yes | yes | Controls details and sends message |
+| delete_hobbies | yes | yes | Can delete individual entries or batch delete |
+| delete_langauges | yes | yes | Only one entry, if language contains teach and learn you will have to provide 1 as teachOrLearn to set it to 0, and 0 to set it to 1 |
+| delete_user | yes | yes | |
 
 
 | POST | Fields | Required | 
@@ -81,6 +84,13 @@ Url rewrite will probably be added at a later occasion
 |  | id_tandem | yes |
 |  | authenticationToken | yes |
 |  | message | yes |
+| delete_user|     |   |
+|  | authenticationToken | yes |
+|  | id_user | yes |
+| delete_language|  |   |
+|  | id_user | yes  |
+|  | id_language | yes |
+|  | teachOrLearn | no |
 
 | GET | Fields | Required | Comment |
 | --- | --- | --- | --- |
@@ -100,6 +110,10 @@ Url rewrite will probably be added at a later occasion
 Authentication key is required to perform this type of request
 This is passed as a post parameter with the name = authenticationToken
 Requests that fails to provide a valid token will be rejected with a status message
+
+*NOTE* Partially apiTester <br />
+Example usage https://meet.vlab.cs.hioa.no/apiTest.html <br />
+
 
 
 

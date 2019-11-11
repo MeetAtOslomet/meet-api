@@ -307,7 +307,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
-        case 'del_hobbies':
+        case 'delete_hobbies':
         {
             if (hasKey($db, $authKey) == true)
             {
@@ -339,7 +339,7 @@ else if ($_SERVER['REQUEST_METHOD'] === "POST")
             break;
         }
 
-        case 'del_language':
+        case 'delete_language':
         {
             if (hasKey($db, $authKey) == true)
             {
